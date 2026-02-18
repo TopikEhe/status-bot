@@ -647,6 +647,10 @@
         async function fetchData() {
             try {
                 // HAPUS headers ngrok-skip-browser-warning
+                const headers = {
+                    'ngrok-skip-browser-warning': '1'
+                };
+                
                 const [vpsRes, botRes] = await Promise.all([
                     fetch(`${API_URL}/api/public/vps`),
                     fetch(`${API_URL}/api/public/bot`)
