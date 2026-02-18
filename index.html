@@ -646,13 +646,10 @@
 
         async function fetchData() {
             try {
-                const headers = {
-                    'ngrok-skip-browser-warning': '1'
-                };
-                
+                // HAPUS headers ngrok-skip-browser-warning
                 const [vpsRes, botRes] = await Promise.all([
-                    fetch(`${API_URL}/api/public/vps`, { headers }),
-                    fetch(`${API_URL}/api/public/bot`, { headers })
+                    fetch(`${API_URL}/api/public/vps`),
+                    fetch(`${API_URL}/api/public/bot`)
                 ]);
 
                 if (!vpsRes.ok || !botRes.ok) throw new Error('Fetch failed');
