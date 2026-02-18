@@ -646,9 +646,13 @@
 
         async function fetchData() {
             try {
+                const headers = {
+                    'ngrok-skip-browser-warning': '1'
+                };
+                
                 const [vpsRes, botRes] = await Promise.all([
-                    fetch(`${API_URL}/api/public/vps`),
-                    fetch(`${API_URL}/api/public/bot`)
+                    fetch(`${API_URL}/api/public/vps`, { headers }),
+                    fetch(`${API_URL}/api/public/bot`, { headers })
                 ]);
 
                 if (!vpsRes.ok || !botRes.ok) throw new Error('Fetch failed');
